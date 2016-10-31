@@ -1,0 +1,20 @@
+{
+  "name": "elasticsearch-synonyms",
+  "version": "1.0.0",
+  "description": "A library for parsing synonyms",
+  "main": "./lib",
+  "scripts": {
+    "watch": "watch 'npm run test' test lib",
+    "test": "tape test/**/*.js"
+  },
+  "keywords": [
+    "elasticsearch",
+    "synonyms"
+  ],
+  "author": "Mark Robson",
+  "license": "MIT",
+  "devDependencies": {
+    "tape": "^4.6.2",
+    "watch": "^1.0.1"
+  }
+}
