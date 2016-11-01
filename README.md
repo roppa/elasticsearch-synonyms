@@ -4,7 +4,7 @@ Well, they aren't really, just check out a Thesaurus. However, the difficulty co
 
 I'm also not worried about case at the moment, so RIRO, I expect your parameters to be the exact case you want.
 
-The following is take from elasticsearch [synonym tokenfilter](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/analysis-synonym-tokenfilter.html) documentation:
+The following is taken from elasticsearch [synonym tokenfilter](https://www.elastic.co/guide/en/elasticsearch/reference/2.3/analysis-synonym-tokenfilter.html) documentation:
 
 ```
 # Blank lines and lines starting with pound are comments.
@@ -96,6 +96,10 @@ Todo:
 should parse a string (file) into an array of values
 
 ### parseString
+
+### expandString
+
+The expand method should take a string containing only spaces and perform simple expansion (a,b,c).
 
 ### expand
 
