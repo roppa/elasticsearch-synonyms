@@ -83,7 +83,13 @@ Searching 'pet' would return 'cat', 'kitten', 'dog', 'puppy'.
 
 ## Methods
 
-### expand(string)
+### expand(array)
+
+Takes an array and returns a comma deimited string.
+
+### expandString(string)
+
+Takes a string of words separated with spaces and returns a comma delimted string.
 
 ### fromArray(array)
 
@@ -113,30 +119,30 @@ The contract method should take an array and perform a simple contraction (a,b,c
 
 The genre method should take a hierarchy object and perform genre expansion (a => a,b,c).
 
+Given the following object:
+
 ```
-cat => cat,pet,
-kitten => kitten,cat,pet,
-dog => dog,pet,
+{
+  pet: {
+    cat: {
+      kitten: 'kitten',
+    },
+    dog: {
+      puppy: 'puppy',
+    }
+  }
+}
+```
+Result will be:
+
+```
+cat => cat,pet
+kitten => kitten,cat,pet
+dog => dog,pet
 puppy => puppy,dog,pet
 ```
 
-string:
-pet
-  cat
-    kitten
-  dog
-    puppy
-
-object:
-{
-  pet: {
-    cat: 'kitten',
-    dog: 'puppy'
-  }
-}
-
-There must be only one top level element
-Each subsequent element starts off lhs, then fat arrow, then itself and predecessor
+There must be only one common ancestor. Each subsequent element starts off lhs, then fat arrow, then itself and predecessors.
 
 ### queryTime
 
