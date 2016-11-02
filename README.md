@@ -81,41 +81,57 @@ puppy => puppy,dog,pet
 
 Searching 'pet' would return 'cat', 'kitten', 'dog', 'puppy'.
 
+## Install
+
+```
+const s = require('elasticsearch-synonyms');
+```
+
 ## Methods
 
-### expand(array)
+### s.expand(array)
 
-Takes an array and returns a comma deimited string.
+Takes an array and returns a comma delimited string.
 
-### expandString(string)
+Turns:
 
-Takes a string of words separated with spaces and returns a comma delimted string.
+```
+['u s a', 'usa', 'united states of america']
+```
 
-### fromArray(array)
+into:
 
-### stringify(array or object)
+```
+'u s a,usa,united states of america => u s a,usa,united states of america'
+```
 
-### stringToArray
+### s.expandString(string)
 
-Todo:
+Takes a string of words separated with spaces and returns a comma delimited string, ```'wood bark tree splinter'``` becomes ```'wood,bark,tree,splinter'```.
 
-should parse a string (file) into an array of values
+### s.contract(array)
 
-### parseString
+The contract method should take an array and perform a simple contraction (a,b,c => a). It takes the first non-phrase and uses that for the replacement. For example:
 
-### expandString
+```
+['a', 'b b', 'c', 'd']
+```
 
-The expand method should take a string containing only spaces and perform simple expansion (a,b,c).
+```
+'a,c,d,b b => a'
+```
 
-### expand
+If all phrases are used, each phrase is expanded:
 
-The expand method should take an array and perform simple expansion (a,b,c), or if phrases are contained (a a,b,c => a a,b,c).
+```
+['a a', 'b b', 'c c', 'd d']
+```
 
-### contract
+```
+'a a,b b,c c,d d => a a,b b,c c,d d'
+```
 
-The contract method should take an array and perform a simple contraction (a,b,c => a).
-
-### genre
+### s.genre(object)
 
 The genre method should take a hierarchy object and perform genre expansion (a => a,b,c).
 
@@ -144,9 +160,24 @@ puppy => puppy,dog,pet
 
 There must be only one common ancestor. Each subsequent element starts off lhs, then fat arrow, then itself and predecessors.
 
-### queryTime
+### s.stringify(array or object)
 
-The queryTime method read file and return all simple contractions used for query time.
+Takes an array or object and stringifies it. With an object, a new line is inserted after each attribute:
+
+```
+{
+  a: ['a', 'b'],
+  c: ['c', 'd'],
+}
+```
+
+```
+'a,b\nc,d'
+```
+
+### s.stringToArray(string)
+
+Takes a string and splits on new line character. Any comments (#) are removed.
 
 ## Testing
 
