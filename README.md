@@ -66,7 +66,7 @@ The key is in the term 'contraction' - words on the left are replaced by the ter
 leap,hop => jump
 ```
 
-This has to be used at analysis time as well as query time, so it has limitations.
+This has to be used at analysis time as well as query time. I think this is because at index time, terms on the left will be replaced with the term on the right, so in order for your search for "hop" to return results, you need to pass that in at the query time.
 
 ## Genre expansion
 
@@ -80,6 +80,14 @@ puppy => puppy,dog,pet
 ```
 
 Searching 'pet' would return 'cat', 'kitten', 'dog', 'puppy'.
+
+## Explicit mapping
+
+These match any token sequence on the LHS of "=>" and replace with all alternatives on the RHS. This has issues with phrases as elasticsearch tokenizes using whitespace. Terms on the left will be replaced by terms on the right.
+
+```
+a,b,c => a,b,c
+```
 
 ## Install
 
@@ -109,9 +117,9 @@ into:
 
 Takes a string of words separated with spaces and returns a comma delimited string, ```'wood bark tree splinter'``` becomes ```'wood,bark,tree,splinter'```.
 
-### s.contract(array)
+### s.contract(array, [replacement])
 
-The contract method should take an array and perform a simple contraction (a,b,c => a). It takes the first non-phrase and uses that for the replacement. For example:
+The contract method should take an array and perform a simple contraction (a,b,c => a). If there is no replacement parameter (optional) it takes the first non-phrase and uses that for the replacement. For example:
 
 ```
 ['a', 'b b', 'c', 'd']
@@ -162,7 +170,7 @@ There must be only one common ancestor. Each subsequent element starts off lhs, 
 
 ### s.stringify(array or object)
 
-Takes an array or object and stringifies it. With an object, a new line is inserted after each attribute:
+Takes an array or object and stringifies it. With an object, a new line is inserted after each attribute (just the top level values are flattened):
 
 ```
 {
@@ -177,7 +185,7 @@ Takes an array or object and stringifies it. With an object, a new line is inser
 
 ### s.stringToArray(string)
 
-Takes a string and splits on new line character. Any comments (#) are removed.
+Takes a string and splits on new line character. Any comments (#) are removed. Used as the starting point for config file processing.
 
 ## Testing
 

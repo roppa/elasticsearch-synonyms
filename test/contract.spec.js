@@ -29,3 +29,13 @@ test('Contract method: phrase only should be expanded', t => {
   t.end();
 
 });
+
+test('Contract method: replacement should be on rhs of fat arrow', t => {
+
+  const stringArray = ['a a', 'b b', 'c c', 'd d'];
+  const replacement = 'finbar';
+
+  t.equals(lib.contract(stringArray, replacement), 'a a,b b,c c,d d => finbar');
+  t.end();
+
+});
