@@ -168,6 +168,22 @@ puppy => puppy,dog,pet
 
 There must be only one common ancestor. Each subsequent element starts off lhs, then fat arrow, then itself and predecessors.
 
+### s.explicit(array, [array])
+
+If a single array, comma delimits lhs and duplicates on rhs:
+
+```
+s.explicit(['g b', 'gb', 'great britain']);
+> g b,gb,great britain => g b,gb,great britain
+```
+
+If two arrays, second array becomes the rhs:
+
+```
+s.explicit(['g b', 'gb', 'great britain'], ['britain', 'england', 'scotland', 'wales']);
+g b,gb,great britain => britain,england,scotland,wales
+```
+
 ### s.stringify(array or object)
 
 Takes an array or object and stringifies it. With an object, a new line is inserted after each attribute (just the top level values are flattened):
