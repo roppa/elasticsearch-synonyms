@@ -211,3 +211,4 @@ Run ```npm run test```
 
   - Elasticsearch [synonyms, expand or contract](https://www.elastic.co/guide/en/elasticsearch/guide/current/synonyms-expand-or-contract.html)
   - Elasticsearch [synonym formats](https://www.elastic.co/guide/en/elasticsearch/guide/current/synonym-formats.html)
+  - [Node solr synonyms](https://github.com/Prinzhorn/node-solr-synonyms)
