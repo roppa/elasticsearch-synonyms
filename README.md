@@ -203,6 +203,25 @@ Takes an array or object and stringifies it. With an object, a new line is inser
 
 Takes a string and splits on new line character. Any comments (#) are removed. Used as the starting point for config file processing.
 
+### s.parseFile(string)
+
+Takes a config file (as a string), like the example token filter file in the introduction, and converts it to an object (tokens are expanded by default):
+
+```
+{
+  'i-pod': ['ipod', 'i-pod', 'i pod'],
+  'i pod': ['ipod', 'i-pod', 'i pod'],
+  ipod: ['ipod', 'i-pod', 'i pod'],
+  'sea biscuit': ['seabiscuit'],
+  'sea biscit': ['seabiscuit'],
+  foozball: ['foozball', 'foosball'],
+  foosball: ['foozball', 'foosball'],
+  universe: ['universe', 'cosmos'],
+  cosmos: ['universe', 'cosmos'],
+  foo: ['foo bar', 'baz']
+}
+```
+
 ## Testing
 
 Run ```npm run test```
