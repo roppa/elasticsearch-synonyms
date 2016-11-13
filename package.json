@@ -1,6 +1,6 @@
 {
   "name": "elasticsearch-synonyms",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A library for parsing synonyms",
   "main": "./lib",
   "scripts": {
