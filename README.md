@@ -1,5 +1,7 @@
 # Synonyms are hard, lets face it
 
+[![Build Status](https://travis-ci.org/roppa/elasticsearch-synonyms.svg?branch=master)](https://travis-ci.org/roppa/elasticsearch-synonyms)
+
 Well, they aren't really, just check out a Thesaurus. However, the difficulty comes when we use phrases for synonyms. As Solr and Elasticsearch parse with a space ' ', phrases are broken up and our results are not what we expect. Like I say, synonyms are hard.
 
 I'm also not worried about case at the moment, so RIRO, I expect your parameters to be the exact case you want.
